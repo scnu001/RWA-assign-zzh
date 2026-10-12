@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="rwa-bridge-title rwa-bridge-desc">
+  <title id="rwa-bridge-title">RWA tokenization bridge architecture</title>
+  <desc id="rwa-bridge-desc">The diagram shows four bridge planks connecting on-chain token claims and cash with the off-chain SPV, custodian and NAV reporter. Shares enter the redemption queue and USDC returns to the holder after FIFO settlement.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 L8 3 L0 6 Z" fill="#4f5d75"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 L8 3 L0 6 Z" fill="#eb6c36"/>
+    </marker>
+    <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0 0 L8 3 L0 6 Z" fill="#2e5aa8"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="760" fill="#f5f5f5"/>
+
+  <text x="56" y="52" fill="#4f5d75" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">COMP7810 · ASSIGNMENT THREE</text>
+  <text x="56" y="92" fill="#2d3142" font-family="Georgia, serif" font-size="32">The claim, not the asset</text>
+  <text x="56" y="122" fill="#4f5d75" font-family="Arial, sans-serif" font-size="15">Four planks connect an on-chain claim to short-dated US Treasuries.</text>
+
+  <rect x="48" y="160" width="456" height="468" rx="8" fill="#ececec" stroke="#bfc0c0"/>
+  <rect x="520" y="160" width="360" height="468" rx="8" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.5"/>
+  <rect x="896" y="160" width="456" height="468" rx="8" fill="#ececec" stroke="#bfc0c0"/>
+  <text x="76" y="196" fill="#4f5d75" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">ON-CHAIN</text>
+  <text x="548" y="196" fill="#eb6c36" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">THE BRIDGE</text>
+  <text x="924" y="196" fill="#4f5d75" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">OFF-CHAIN / LEGAL</text>
+
+  <!-- connectors are drawn before nodes -->
+  <path d="M242 316 H516 Q524 316 524 324 V324" fill="none" stroke="#4f5d75" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M650 276 V240 H1010" fill="none" stroke="#4f5d75" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M1010 368 H888 Q880 368 880 376 V376" fill="none" stroke="#4f5d75" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M650 468 H504 Q496 468 496 460 V460" fill="none" stroke="#eb6c36" stroke-width="2.4" marker-end="url(#arrow-accent)"/>
+  <path d="M650 540 H504 Q496 540 496 532 V532" fill="none" stroke="#2e5aa8" stroke-width="2" marker-end="url(#arrow-link)"/>
+  <path d="M1010 470 H888 Q880 470 880 478 V478" fill="none" stroke="#2e5aa8" stroke-width="2" marker-end="url(#arrow-link)"/>
+  <path d="M1088 520 V564 H1212" fill="none" stroke="#4f5d75" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M812 468 H876 Q884 468 884 460 V460" fill="none" stroke="#eb6c36" stroke-width="2.4" stroke-dasharray="6 5" marker-end="url(#arrow-accent)"/>
+
+  <!-- connector labels -->
+  <rect x="304" y="286" width="120" height="24" rx="4" fill="#f5f5f5"/>
+  <text x="364" y="303" text-anchor="middle" fill="#4f5d75" font-family="Arial, sans-serif" font-size="13">attest / NAV</text>
+  <rect x="790" y="218" width="76" height="24" rx="4" fill="#f5f5f5"/>
+  <text x="828" y="235" text-anchor="middle" fill="#4f5d75" font-family="Arial, sans-serif" font-size="13">report</text>
+  <rect x="282" y="438" width="98" height="24" rx="4" fill="#f5f5f5"/>
+  <text x="331" y="455" text-anchor="middle" fill="#eb6c36" font-family="Arial, sans-serif" font-size="13">shares in</text>
+  <rect x="282" y="510" width="98" height="24" rx="4" fill="#f5f5f5"/>
+  <text x="331" y="527" text-anchor="middle" fill="#2e5aa8" font-family="Arial, sans-serif" font-size="13">USDC out</text>
+  <rect x="916" y="438" width="94" height="24" rx="4" fill="#f5f5f5"/>
+  <text x="963" y="455" text-anchor="middle" fill="#2e5aa8" font-family="Arial, sans-serif" font-size="13">T+1 cash</text>
+
+  <!-- nodes -->
+  <g font-family="Arial, sans-serif" fill="#2d3142">
+    <rect x="92" y="248" width="300" height="72" rx="8" fill="#fff" stroke="#2d3142"/>
+    <text x="242" y="280" text-anchor="middle" font-size="20" font-weight="700">TBillToken</text>
+    <text x="242" y="302" text-anchor="middle" font-size="13" fill="#4f5d75">18-decimal claim · whitelist</text>
+
+    <rect x="92" y="400" width="300" height="72" rx="8" fill="#fff" stroke="#2d3142"/>
+    <text x="242" y="432" text-anchor="middle" font-size="20" font-weight="700">TBillVault</text>
+    <text x="242" y="454" text-anchor="middle" font-size="13" fill="#4f5d75">USDC buffer · subscribe · attest</text>
+
+    <rect x="548" y="248" width="264" height="72" rx="8" fill="rgba(235,108,54,0.12)" stroke="#eb6c36" stroke-width="1.5"/>
+    <text x="680" y="280" text-anchor="middle" font-size="20" font-weight="700">RedemptionQueue</text>
+    <text x="680" y="302" text-anchor="middle" font-size="13" fill="#4f5d75">fixed-price FIFO ticket</text>
+
+    <rect x="548" y="400" width="264" height="72" rx="8" fill="#fff" stroke="#2d3142"/>
+    <text x="680" y="432" text-anchor="middle" font-size="20" font-weight="700">Settlement layer</text>
+    <text x="680" y="454" text-anchor="middle" font-size="13" fill="#4f5d75">burn escrow · credit claimable</text>
+
+    <rect x="960" y="204" width="300" height="72" rx="8" fill="#fff" stroke="#2d3142"/>
+    <text x="1110" y="236" text-anchor="middle" font-size="20" font-weight="700">NAV reporter</text>
+    <text x="1110" y="258" text-anchor="middle" font-size="13" fill="#4f5d75">REPORTER_ROLE · attestation</text>
+
+    <rect x="960" y="332" width="300" height="72" rx="8" fill="#fff" stroke="#2d3142"/>
+    <text x="1110" y="364" text-anchor="middle" font-size="20" font-weight="700">SPV / custodian</text>
+    <text x="1110" y="386" text-anchor="middle" font-size="13" fill="#4f5d75">legal owner · Treasury holdings</text>
+
+    <rect x="960" y="472" width="240" height="72" rx="8" fill="#fff" stroke="#2d3142"/>
+    <text x="1080" y="504" text-anchor="middle" font-size="20" font-weight="700">T+1 sale</text>
+    <text x="1080" y="526" text-anchor="middle" font-size="13" fill="#4f5d75">sell bills · wire proceeds</text>
+
+    <rect x="1212" y="528" width="112" height="72" rx="8" fill="#fff" stroke="#2d3142"/>
+    <text x="1268" y="560" text-anchor="middle" font-size="18" font-weight="700">Holder</text>
+    <text x="1268" y="582" text-anchor="middle" font-size="13" fill="#4f5d75">claim()</text>
+  </g>
+
+  <line x1="48" y1="672" x2="1352" y2="672" stroke="#bfc0c0"/>
+  <text x="56" y="704" fill="#4f5d75" font-family="Arial, sans-serif" font-size="13">① custody · ② attestation · ③ redemption · ④ admission</text>
+  <text x="56" y="728" fill="#4f5d75" font-family="Arial, sans-serif" font-size="13">The chain records a claim; the legal bridge must still hold the asset and return cash.</text>
+</svg>

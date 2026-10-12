@@ -1,0 +1,12 @@
+cache/
+out/
+broadcast/
+.env
+demo-state.json
+.DS_Store
+
+# lib/ is deliberately not ignored: forge-std and openzeppelin-contracts are vendored into
+# lib/ with the repo, so students can clone and run make test straight away without going
+# online for make setup.
+# This file used to carry a lib/ line, which kept lib/ out of the repo and left students
+# with an empty directory.

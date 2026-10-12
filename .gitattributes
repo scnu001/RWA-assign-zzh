@@ -1,0 +1,18 @@
+# A good share of the students in this lab use Windows. Git for Windows installs with
+# core.autocrlf=true by default, which rewrites checked-out text files as CRLF, so:
+#   bash scripts/doctor.sh  -> every line reports $'\r': command not found
+#   make ...                -> Makefile:N: *** missing separator
+# It looks like "every script is broken", but it is only line endings. Pin them to LF
+# at the repository level here.
+* text=auto eol=lf
+
+# do not normalize line endings in binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
